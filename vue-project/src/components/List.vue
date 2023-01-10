@@ -1,18 +1,18 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { reactive } from 'vue'
+import { reactive } from 'vue';
 
 
 const state = reactive({
-    listItems: []
+    listItems: [],
+    busy: false
 })
+
 function fetchData() {
+    state.busy = true
     fetch('http://localhost:3001/musicians').then(response => response.json()).then(data => {
-
         state.listItems.push(...data)
-
-        console.log(state.listItems)
-
+        state.busy = false
     })
 };
 fetchData()
@@ -20,8 +20,8 @@ fetchData()
 </script>
 
 <template>
+    <span v-if="state.busy">BUSY</span>
     <nav class="nav">
-        <!-- <h3>{{ title }}</h3> -->
         <table>
             <thead>
                 <tr>
