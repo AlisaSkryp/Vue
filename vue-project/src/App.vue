@@ -1,27 +1,32 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive } from "vue";
+import { ref } from "vue";
+
 import Header from "./components/Header.vue";
+import List from "./components/List.vue";
 
-const state = reactive({ num: 0 })
-
+const state = reactive({ num: 0 });
+const postFontSize = ref(1);
 function increment() {
-  state.num++
+  state.num++;
 }
+
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <Header msg="You did it!" :num="state.num" />
-      <button @click="increment">
-        INCREMENT
-      </button>
+      <!-- <Header msg="You did it!" :num="state.num" /> -->
+      <Header />
+      <!-- <button @click="increment">INCREMENT</button> -->
     </div>
   </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <body>
+    <div :style="{ fontSize: postFontSize + 'em' }">
+      <List />
+    </div>
+  </body>
 </template>
 
 <style scoped>
@@ -51,4 +56,6 @@ header {
     flex-wrap: wrap;
   }
 }
+
+
 </style>

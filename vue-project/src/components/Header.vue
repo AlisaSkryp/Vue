@@ -1,10 +1,10 @@
 <script setup>
-  const props = defineProps(['msg', 'num'])
+const props = defineProps(["msg", "num"]);
 </script>
 
 <template>
   <header class="header">
-    <p>Header</p>
+    <p>Music</p>
     <span>{{ msg }}</span>
     <div>{{ num }}</div>
   </header>
